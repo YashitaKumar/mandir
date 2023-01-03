@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<MotionScene 
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:motion="http://schemas.android.com/apk/res-auto">
+
+    <Transition
+        motion:duration="1000"
+        motion:constraintSetStart="@+id/start"
+        motion:constraintSetEnd="@+id/middle"
+        motion:autoTransition="none">
+       <KeyFrameSet>
+       </KeyFrameSet>
+    </Transition>
+    <Transition
+        motion:duration="1000"
+        motion:constraintSetStart="@+id/middle"
+        motion:constraintSetEnd="@+id/end"
+        motion:autoTransition="none">
+        <KeyFrameSet>
+        </KeyFrameSet>
+    </Transition>
+
+
+</MotionScene>

@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<MotionScene 
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:motion="http://schemas.android.com/apk/res-auto">
+
+
+    <ConstraintSet android:id="@+id/start">
+        <Constraint
+            android:id="@+id/imageView2"
+            motion:layout_constraintEnd_toEndOf="parent"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            motion:layout_constraintBottom_toBottomOf="parent"
+            motion:layout_constraintTop_toTopOf="parent"
+            motion:layout_constraintStart_toStartOf="parent"
+            android:rotation="20"
+            motion:transitionEasing="cubic(0.2,0.19,0.6,0.19)" />
+    </ConstraintSet>
+    <ConstraintSet android:id="@+id/middle" >
+        <Constraint
+            android:id="@+id/imageView2"
+            motion:layout_constraintEnd_toEndOf="parent"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            motion:layout_constraintBottom_toBottomOf="parent"
+            motion:layout_constraintTop_toTopOf="parent"
+            motion:layout_constraintStart_toStartOf="parent"
+            android:rotation="-40"
+            motion:transitionEasing="cubic(0.2,0.2,0.6,0.19)" />
+    </ConstraintSet>
+    <Transition
+        android:id="@+id/t1"
+        motion:constraintSetStart="@+id/start"
+        motion:constraintSetEnd="@+id/middle"
+        motion:motionInterpolator="easeInOut"
+        motion:duration="900"
+        motion:autoTransition="none">
+        <OnClick motion:targetId="@+id/imageView2" />
+    </Transition>
+    <Transition
+        android:id="@+id/t2"
+        motion:constraintSetStart="@+id/middle"
+        motion:constraintSetEnd="@+id/start"
+        motion:autoTransition="animateToEnd"
+        motion:pathMotionArc="startVertical"
+        motion:motionInterpolator="easeInOut"
+        motion:duration="900">
+
+    </Transition>
+
+</MotionScene>
