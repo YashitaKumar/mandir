@@ -1,5 +1,7 @@
 package com.example.mandir;
 
+import static com.example.mandir.R.drawable.btn_bg;
+
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.motion.widget.MotionLayout;
@@ -17,6 +19,7 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
+import android.graphics.drawable.Drawable;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.provider.MediaStore;
@@ -33,6 +36,7 @@ import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
@@ -41,6 +45,7 @@ import com.github.jinatonic.confetti.ConfettiSource;
 import com.github.jinatonic.confetti.ConfettoGenerator;
 import com.github.jinatonic.confetti.confetto.BitmapConfetto;
 import com.github.jinatonic.confetti.confetto.Confetto;
+import com.google.android.material.bottomsheet.BottomSheetBehavior;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.FirebaseDatabase;
@@ -64,7 +69,7 @@ public class MainActivity extends AppCompatActivity implements ConfettoGenerator
     ConstraintLayout constraintLayout;
     SwipeListener swipeListener;
     MotionLayout motionLayout;
-    ImageButton btnF,btnS,btnP;
+    ImageButton btnF,btnS,btnP,btnPremium;
 
     RecyclerView recyclerView,recyclerViewFlowers;
     GifImageView gifImageView;
@@ -73,7 +78,7 @@ public class MainActivity extends AppCompatActivity implements ConfettoGenerator
    //Other Variables for working
     int i=0;
     int j=0;
-    int count,maxCount;
+    int count,maxCount,btnCount=0;
     MyAdapter myAdapter;
     private int size;
     private int velocitySlow, velocityNormal;
@@ -82,6 +87,8 @@ public class MainActivity extends AppCompatActivity implements ConfettoGenerator
     int []arrImages;
     String []arrNames;
     FlowersAdapter flowersAdapter;
+    BottomSheetBehavior bottomSheetBehavior;
+    ArrayList<String> godNamess;
 
 
     @SuppressLint("MissingInflatedId")
@@ -98,6 +105,7 @@ public class MainActivity extends AppCompatActivity implements ConfettoGenerator
         btnF = findViewById(R.id.flowerBtn);
         btnS = findViewById(R.id.shankhBtn);
         btnP = findViewById(R.id.poojaBtn);
+        btnPremium = findViewById(R.id.premuimBtn);
         container = findViewById(R.id.container);
         thali = findViewById(R.id.thali);
         recyclerView = findViewById(R.id.navigation);
@@ -181,8 +189,8 @@ public class MainActivity extends AppCompatActivity implements ConfettoGenerator
         //flowers dropping
 
         //Flower Selection Working
-        arrImages = new int[]{R.drawable.p, R.drawable.f4,R.drawable.rose,R.drawable.f5,R.drawable.f6,R.drawable.f7,R.drawable.f8,R.drawable.f9,R.drawable.f10,R.drawable.f11,R.drawable.f12};
-        arrNames = new String[]{"Genda","Parijat","Rose","neelkamal","mogra","lotus","kovidar","gudhal","mogra","champa","ashok"};
+        arrImages = new int[]{ R.drawable.f4,R.drawable.rose,R.drawable.f5,R.drawable.f6,R.drawable.f7,R.drawable.f8,R.drawable.f9,R.drawable.f10,R.drawable.f11,R.drawable.f12};
+        arrNames = new String[]{"Parijat","Rose","neelkamal","mogra","lotus","kovidar","gudhal","mogra","champa","ashok"};
         LinearLayoutManager layoutManager = new LinearLayoutManager(this);
         layoutManager.setOrientation(RecyclerView.HORIZONTAL);
         recyclerViewFlowers.setLayoutManager(layoutManager);
@@ -194,25 +202,45 @@ public class MainActivity extends AppCompatActivity implements ConfettoGenerator
         recyclerViewFlowers.setHasFixedSize(true);
 
         //flower dropping button
+        btnPremium.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                bottomSheetBehavior = BottomSheetBehavior.from(recyclerViewFlowers);
+                if(bottomSheetBehavior.getState() == BottomSheetBehavior.STATE_EXPANDED)
+                {
+                    bottomSheetBehavior.setState(BottomSheetBehavior.STATE_COLLAPSED);
+//                    drawable.setTint(getResources().getColor(R.color.gold_med));
+                }
+                else {
+                    bottomSheetBehavior.setState(BottomSheetBehavior.STATE_EXPANDED);
+//                    drawable.setTint(getResources().getColor(R.color.gold_light));
+                }
+
+            }
+        });
         btnF.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                final Resources res = getResources();
-                size = 156;
-                velocitySlow = 50;
-                velocityNormal = 100;
 
-                bitmap = Bitmap.createScaledBitmap(
-                        BitmapFactory.decodeResource(res, arrImages[0]),
-                        size,
-                        size,
-                        false
-                );
-                ConfettiManager confettiManager = getConfettiManager().setNumInitialCount(0)
-                        .setEmissionDuration(3000)
-                        .setEmissionRate(20)
-                        .animate();
-//                showDialog();
+
+                Drawable drawable = btnF.getBackground();
+
+                    final Resources res = getResources();
+                    size = 156;
+                    velocitySlow = 50;
+                    velocityNormal = 100;
+
+                    bitmap = Bitmap.createScaledBitmap(
+                            BitmapFactory.decodeResource(res, arrImages[0]),
+                            size,
+                            size,
+                            false
+                    );
+                    ConfettiManager confettiManager = getConfettiManager().setNumInitialCount(0)
+                            .setEmissionDuration(3000)
+                            .setEmissionRate(20)
+                            .animate();
+
 
 
             }
@@ -265,6 +293,9 @@ public class MainActivity extends AppCompatActivity implements ConfettoGenerator
         //MAIN MANDIR FUNCTIONING
         //God Images working
         swipeListener = new SwipeListener(constraintLayout);
+        //Adapter initialization
+
+        godNamess = new ArrayList<>();
 
         //Getting Data From Database
         final ArrayList<MainGods> gods = new ArrayList<>();
@@ -274,6 +305,7 @@ public class MainActivity extends AppCompatActivity implements ConfettoGenerator
                 for(DataSnapshot data: snapshot.getChildren())
                 {
                     String name = data.child("godName").getValue().toString();
+                    godNamess.add(name);
                     String key = data.getKey();
                     DataSnapshot dataSnapshot= snapshot.child("/"+key+"/GodImages");
                     ArrayList<GodImages> godImages = new ArrayList<>();
@@ -288,6 +320,7 @@ public class MainActivity extends AppCompatActivity implements ConfettoGenerator
                 }
                 swipeListener.getData(gods);
 
+
                 }
 
             @Override
@@ -297,7 +330,18 @@ public class MainActivity extends AppCompatActivity implements ConfettoGenerator
         });
 
         //Navigation Working
-
+        LinearLayoutManager layoutManager2 = new LinearLayoutManager(this);
+        layoutManager2.setOrientation(RecyclerView.HORIZONTAL);
+        recyclerView.setLayoutManager(layoutManager2);
+        FirebaseRecyclerOptions<MainGods> options =
+                new FirebaseRecyclerOptions.Builder<MainGods>()
+                        .setQuery(FirebaseDatabase.getInstance().getReference().child("/pics"), MainGods.class)
+                        .build();
+        myAdapter = new MyAdapter(options);
+        myAdapter.setMainImage(gImage);
+        myAdapter.setContext(getApplicationContext());
+        recyclerView.setAdapter(myAdapter);
+        recyclerView.setHasFixedSize(true);
 
 
 
@@ -393,6 +437,7 @@ public class MainActivity extends AppCompatActivity implements ConfettoGenerator
                             j=mainGods.get(0).getGodImages().size()-1;
                         }
                                 Glide.with(gImage.getContext()).load(mainGods.get(i).getGodImages().get(j).getImage()).into(gImage);
+                                myAdapter.setPos(j);
                             }
                             else{
                                 //Swipe Up
@@ -402,7 +447,7 @@ public class MainActivity extends AppCompatActivity implements ConfettoGenerator
                             j=0;
                         }
                                 Glide.with(gImage.getContext()).load(mainGods.get(i).getGodImages().get(j).getImage()).into(gImage);
-
+                                myAdapter.setPos(j);
                             }
                         }
                     }
@@ -418,6 +463,17 @@ public class MainActivity extends AppCompatActivity implements ConfettoGenerator
         public boolean onTouch(View view, MotionEvent motionEvent) {
             return gestureDetector.onTouchEvent(motionEvent);
         }
+    }
+    @Override
+    protected void onStart() {
+        super.onStart();
+        myAdapter.startListening();
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        myAdapter.stopListening();
     }
 
 }

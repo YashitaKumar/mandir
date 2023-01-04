@@ -26,32 +26,33 @@
         app:layout_constraintVertical_bias="0.0">
 
         <ImageView
+            android:id="@+id/imageView3"
             android:layout_width="match_parent"
             android:layout_height="610dp"
+            android:src="@drawable/b3"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0"
-            android:src="@drawable/b3"/>
+            app:layout_constraintVertical_bias="0.5" />
 
 
         <ImageView
             android:id="@+id/test"
-            android:layout_width="250dp"
-            android:layout_height="280dp"
+            android:layout_width="300dp"
+            android:layout_height="380dp"
             android:src="@drawable/gos4"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.4"/>
+            app:layout_constraintVertical_bias="0.45"/>
         <androidx.constraintlayout.motion.widget.MotionLayout
             android:id="@+id/motionLayout"
             android:layout_width="match_parent"
-            android:layout_height="140dp"
+            android:layout_height="340dp"
             app:layoutDescription="@xml/activity_main_xml_motionlayout_scene2"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -72,6 +73,9 @@
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintVertical_bias="0.0" />
 
+
+
+
         </androidx.constraintlayout.motion.widget.MotionLayout>
 
 
@@ -79,7 +83,7 @@
             android:id="@+id/imageView4"
             android:layout_width="match_parent"
             android:layout_height="410dp"
-            android:src="@drawable/arch4"
+            android:src="@drawable/final_arch"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
@@ -88,27 +92,27 @@
             app:layout_constraintVertical_bias="0.0" />
 
         <androidx.recyclerview.widget.RecyclerView
-            android:layout_width="100dp"
-            android:layout_height="100dp"
+            android:layout_width="60dp"
+            android:layout_height="40dp"
             android:id="@+id/navigation"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.0"/>
+            app:layout_constraintVertical_bias="0.03"/>
 
 
         <ImageView
             android:id="@+id/thali"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/thali2"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:src="@drawable/thali"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.75" />
+            app:layout_constraintVertical_bias="0.85" />
 
         <pl.droidsonroids.gif.GifImageView
             android:id="@+id/thaliFire"
@@ -117,10 +121,10 @@
             android:src="@drawable/fire2"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.498"
+            app:layout_constraintHorizontal_bias="0.424"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.636" />
+            app:layout_constraintVertical_bias="0.749" />
 
         <LinearLayout
             android:id="@+id/linearLayout"
@@ -131,7 +135,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.7"
+            app:layout_constraintVertical_bias="0.75"
             app:layout_constraintHorizontal_bias="0.07">
 
             <ImageButton
@@ -167,31 +171,46 @@
                 tools:layout_editor_absoluteY="551dp"
                 android:layout_marginTop="10dp"/>
 
-
         </LinearLayout>
 
+        <ImageButton
+            android:id="@+id/premuimBtn"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:background="@drawable/btn_bg"
+            android:padding="4dp"
+            android:scaleType="fitXY"
+            android:src="@drawable/rose"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.955"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/imageView4"
+            app:layout_constraintVertical_bias="0.704" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-    <androidx.core.widget.NestedScrollView
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
         android:layout_width="match_parent"
         android:layout_height="100dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1"
-
-        >
+        app:layout_constraintVertical_bias="1">
 
         <androidx.recyclerview.widget.RecyclerView
             android:layout_width="match_parent"
             android:layout_height="100dp"
             android:id="@+id/flowersSelection"
-            android:scrollbars="horizontal"/>
+            android:scrollbars="horizontal"
+            app:layout_behavior="com.google.android.material.bottomsheet.BottomSheetBehavior"
+            app:behavior_peekHeight = "0dp"
+            app:behavior_hideable="true"/>
 
-    </androidx.core.widget.NestedScrollView>
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
