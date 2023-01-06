@@ -3,15 +3,7 @@ package model;
 import java.util.ArrayList;
 
 public class MainGods {
-    public String getGod() {
-        return god;
-    }
 
-    public void setGod(String god) {
-        this.god = god;
-    }
-
-    String god;
     public String getGodName() {
         return godName;
     }
@@ -33,9 +25,25 @@ public class MainGods {
         this.godImages = godImages;
     }
 
+    public MainGods(String godName, ArrayList<GodImages> godImages, String godMainName) {
+        this.godName = godName;
+        this.godImages = godImages;
+        this.godMainName = godMainName;
+    }
+
     public MainGods() {
     }
 
     private String godName;
     private ArrayList<GodImages> godImages;
+
+    public String getGodMainName() {
+        return godMainName;
+    }
+
+    public void setGodMainName(String godMainName) {
+        this.godMainName = godMainName;
+    }
+
+    private String godMainName;
 }

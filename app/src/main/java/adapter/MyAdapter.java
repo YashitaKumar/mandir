@@ -63,7 +63,9 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
 
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
-        holder.textView.setText(mainGods.get(holder.getAdapterPosition()).getGod());
+
+            holder.textView.setText(mainGods.get(holder.getBindingAdapterPosition()).getGodMainName());
+
 //        Glide.with(holder.circleImageView.getContext()).load(model.getGodName()).into(holder.circleImageView);
         holder.pos = pos;
         pos += 1;
@@ -73,7 +75,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
                 if (holder.checkBox.isChecked()) {
                     selected.add(holder.pos);
                 } else {
-                    holder.textView.setText(mainGods.get(holder.getAdapterPosition()).getGod());
+//                    holder.textView.setText(mainGods.get(position).getGod());
                 }
             }
         });

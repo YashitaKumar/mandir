@@ -54,6 +54,7 @@ public class DummyActivity extends AppCompatActivity {
                 for(DataSnapshot data: snapshot.getChildren())
                 {
                     String name = data.child("godName").getValue().toString();
+                    String mainName = data.child("godMainName").getValue().toString();
                     String key = data.getKey();
                     DataSnapshot dataSnapshot= snapshot.child("/"+key+"/GodImages");
                     ArrayList<GodImages> godImages = new ArrayList<>();
@@ -63,7 +64,7 @@ public class DummyActivity extends AppCompatActivity {
                         GodImages godImages1 = new GodImages(poster);
                         godImages.add(godImages1);
                     }
-                    MainGods mainGods = new MainGods(name,godImages);
+                    MainGods mainGods = new MainGods(name,godImages,mainName);
                     gods.add(mainGods);
                 }
                 myAdapter.notifyDataSetChanged();
