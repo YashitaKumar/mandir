@@ -31,66 +31,58 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 import model.GodImages;
 import model.MainGods;
 
-public class MyAdapter extends FirebaseRecyclerAdapter<MainGods, MyAdapter.MyViewHolder> {
-
-
-    /**
-     * Initialize a {@link RecyclerView.Adapter} that listens to a Firebase query. See
-     * {@link FirebaseRecyclerOptions} for configuration options.
-     *
-     * @param options
-     */
-    ArrayList<Integer> selected;
-    static int pos=0;
+public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
+    ArrayList<MainGods> mainGods;
     Context context;
+    int pos =0;
 
-    public void setContext(Context context) {
+    public MyAdapter(ArrayList<MainGods> mainGods, Context context) {
+        this.mainGods = mainGods;
         this.context = context;
+        selected = new ArrayList<>();
     }
+
+    ArrayList<Integer> selected;
 
     public ArrayList<Integer> getSelected() {
         return selected;
     }
 
-    public MyAdapter(@NonNull FirebaseRecyclerOptions<MainGods> options) {
-
-        super(options);
-        selected = new ArrayList<>();
-        pos=0;
+    @NonNull
+    @Override
+    public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.navigation,parent,false);
+        return new MyViewHolder(view);
     }
 
     @Override
-    protected void onBindViewHolder(@NonNull MyViewHolder holder, int position, @NonNull MainGods model) {
-        holder.textView.setText(model.getGod());
+    public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
+        holder.textView.setText(mainGods.get(holder.getAdapterPosition()).getGod());
 //        Glide.with(holder.circleImageView.getContext()).load(model.getGodName()).into(holder.circleImageView);
         holder.pos = pos;
-        pos+=1;
+        pos += 1;
         holder.checkBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
-                if(holder.checkBox.isChecked())
-                {
+                if (holder.checkBox.isChecked()) {
                     selected.add(holder.pos);
-                }
-                else
-                {
-                    holder.textView.setText(model.getGod());
+                } else {
+                    holder.textView.setText(mainGods.get(holder.getAdapterPosition()).getGod());
                 }
             }
         });
 
     }
 
-    @NonNull
     @Override
-    public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.navigation, parent, false);
-        return new MyViewHolder(view);
+    public int getItemCount() {
+        return mainGods.size();
     }
 
     public class MyViewHolder extends RecyclerView.ViewHolder {

@@ -14,12 +14,16 @@ import android.widget.Button;
 import android.widget.Toast;
 
 import com.firebase.ui.database.FirebaseRecyclerOptions;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 import java.util.Collections;
 
 import adapter.MyAdapter;
+import model.GodImages;
 import model.MainGods;
 
 public class DummyActivity extends AppCompatActivity {
@@ -37,14 +41,44 @@ public class DummyActivity extends AppCompatActivity {
                 LinearLayoutManager layoutManager2 = new LinearLayoutManager(this);
         layoutManager2.setOrientation(RecyclerView.VERTICAL);
         recyclerView.setLayoutManager(layoutManager2);
-        FirebaseRecyclerOptions<MainGods> options =
-                new FirebaseRecyclerOptions.Builder<MainGods>()
-                        .setQuery(FirebaseDatabase.getInstance().getReference().child("/pics"), MainGods.class)
-                        .build();
-        myAdapter = new MyAdapter(options);
-        myAdapter.setContext(getApplicationContext());
+//        FirebaseRecyclerOptions<MainGods> options =
+//                new FirebaseRecyclerOptions.Builder<MainGods>()
+//                        .setQuery(FirebaseDatabase.getInstance().getReference().child("/pics"), MainGods.class)
+//                        .build();
+
+        final ArrayList<MainGods> gods = new ArrayList<>();
+        myAdapter = new MyAdapter(gods,getApplicationContext());
+        FirebaseDatabase.getInstance().getReference().child("/pics").addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                for(DataSnapshot data: snapshot.getChildren())
+                {
+                    String name = data.child("godName").getValue().toString();
+                    String key = data.getKey();
+                    DataSnapshot dataSnapshot= snapshot.child("/"+key+"/GodImages");
+                    ArrayList<GodImages> godImages = new ArrayList<>();
+                    for(DataSnapshot data2: dataSnapshot.getChildren())
+                    {
+                        String poster = data2.child("image").getValue().toString();
+                        GodImages godImages1 = new GodImages(poster);
+                        godImages.add(godImages1);
+                    }
+                    MainGods mainGods = new MainGods(name,godImages);
+                    gods.add(mainGods);
+                }
+                myAdapter.notifyDataSetChanged();
+
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
         recyclerView.setAdapter(myAdapter);
         recyclerView.setHasFixedSize(true);
+
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -67,15 +101,15 @@ public class DummyActivity extends AppCompatActivity {
 
     }
 
-    @Override
-    protected void onStart() {
-        super.onStart();
-        myAdapter.startListening();
-    }
-
-    @Override
-    protected void onStop() {
-        super.onStop();
-        myAdapter.stopListening();
-    }
+//    @Override
+//    protected void onStart() {
+//        super.onStart();
+//        myAdapter.startListening();
+//    }
+//
+//    @Override
+//    protected void onStop() {
+//        super.onStop();
+//        myAdapter.stopListening();
+//    }
 }
