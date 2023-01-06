@@ -3,6 +3,15 @@ package model;
 import java.util.ArrayList;
 
 public class MainGods {
+    public String getGod() {
+        return god;
+    }
+
+    public void setGod(String god) {
+        this.god = god;
+    }
+
+    String god;
     public String getGodName() {
         return godName;
     }

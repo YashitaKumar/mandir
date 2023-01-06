@@ -1,15 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
-<de.hdodenhof.circleimageview.CircleImageView
-    android:id="@+id/nav"
-    android:layout_width="40dp"
-    android:layout_height="40dp"
-    android:src="@drawable/gos4"
-    android:textColor="@color/white"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    />
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
 
 
+    <TextView
+        android:id="@+id/godName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.084"
+        app:layout_constraintStart_toStartOf="@id/checkBox"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.5"
+        android:layout_marginLeft="50dp"
+        android:text="God Name"/>
+    <CheckBox
+        android:id="@+id/checkBox"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.084"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.019" />
 
 
-
+</androidx.constraintlayout.widget.ConstraintLayout>

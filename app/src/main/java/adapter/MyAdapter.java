@@ -2,6 +2,7 @@ package adapter;
 
 import android.content.Context;
 import android.os.Build;
+import android.util.Log;
 import android.view.GestureDetector;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
@@ -10,6 +11,8 @@ import android.view.ViewGroup;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.view.animation.ScaleAnimation;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -42,74 +45,44 @@ public class MyAdapter extends FirebaseRecyclerAdapter<MainGods, MyAdapter.MyVie
      *
      * @param options
      */
-    ImageView mainImage;
+    ArrayList<Integer> selected;
+    static int pos=0;
     Context context;
-    View view;
-    Animation animation;
-
-    public void setView(View view) {
-        this.view = view;
-    }
 
     public void setContext(Context context) {
         this.context = context;
     }
 
-    public void setPos(int pos) {
-        this.pos = pos;
-    }
-
-    int pos = 0;
-
-    public void setMainImage(ImageView mainImage) {
-        this.mainImage = mainImage;
+    public ArrayList<Integer> getSelected() {
+        return selected;
     }
 
     public MyAdapter(@NonNull FirebaseRecyclerOptions<MainGods> options) {
+
         super(options);
+        selected = new ArrayList<>();
+        pos=0;
     }
 
     @Override
     protected void onBindViewHolder(@NonNull MyViewHolder holder, int position, @NonNull MainGods model) {
-        Glide.with(holder.imageView.getContext()).load(model.getGodName()).into(holder.imageView);
-        animation = AnimationUtils.loadAnimation(holder.itemView.getContext(), R.anim.scaling);
-        setView(holder.itemView);
-        holder.itemView.setAnimation(animation);
-//        SwipeListener swipeListener = new SwipeListener(holder.itemView);
-
-
-        holder.imageView.setOnClickListener(new View.OnClickListener() {
+        holder.textView.setText(model.getGod());
+//        Glide.with(holder.circleImageView.getContext()).load(model.getGodName()).into(holder.circleImageView);
+        holder.pos = pos;
+        pos+=1;
+        holder.checkBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
-            public void onClick(View view) {
-                FirebaseDatabase.getInstance().getReference().child("/pics").addListenerForSingleValueEvent(new ValueEventListener() {
-                    @Override
-                    public void onDataChange(@NonNull DataSnapshot snapshot) {
-                        for (DataSnapshot data : snapshot.getChildren()) {
-                            String name = data.child("godName").getValue().toString();
-                            String key = data.getKey();
-                            if (name.equals(model.getGodName())) {
-                                DataSnapshot dataSnapshot = snapshot.child("/" + key + "/GodImages");
-                                ArrayList<GodImages> godImages = new ArrayList<>();
-                                for (DataSnapshot data2 : dataSnapshot.getChildren()) {
-                                    String poster = data2.child("image").getValue().toString();
-                                    GodImages godImages1 = new GodImages(poster);
-                                    godImages.add(godImages1);
-                                }
-                                Glide.with(mainImage.getContext()).load(godImages.get(pos).getImage()).into(mainImage);
-
-                            }
-                        }
-                    }
-
-                    @Override
-                    public void onCancelled(@NonNull DatabaseError error) {
-
-                    }
-                });
-
+            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+                if(holder.checkBox.isChecked())
+                {
+                    selected.add(holder.pos);
+                }
+                else
+                {
+                    holder.textView.setText(model.getGod());
+                }
             }
         });
-
 
     }
 
@@ -121,62 +94,19 @@ public class MyAdapter extends FirebaseRecyclerAdapter<MainGods, MyAdapter.MyVie
     }
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
-        CircleImageView imageView;
+       CheckBox checkBox;
+       TextView textView;
+       CircleImageView circleImageView;
+       int pos;
 
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
-            imageView = itemView.findViewById(R.id.nav);
+
+            checkBox = itemView.findViewById(R.id.checkBox);
+            textView = itemView.findViewById(R.id.godName);
+//            circleImageView = itemView.findViewById(R.id.god);
+
         }
     }
 
-//    public class SwipeListener implements View.OnTouchListener {
-//
-//        GestureDetector gestureDetector;
-//        ArrayList<MainGods> mainGods;
-//
-//        public SwipeListener(View view) {
-//            int threshold = 0;
-//            int velocity_threshold = 0;
-//
-//
-//            GestureDetector.SimpleOnGestureListener listener = new GestureDetector.SimpleOnGestureListener() {
-//
-//                @Override
-//                public boolean onDown(MotionEvent e) {
-//                    return true;
-//                }
-//
-//                @Override
-//                public boolean onFling(MotionEvent e1, MotionEvent e2, float velocityX, float velocityY) {
-//                    float xDiff = e2.getX() - e1.getX();
-//                    float yDiff = e2.getY() - e1.getY();
-//
-//                    if (Math.abs(xDiff) > Math.abs(yDiff)) {
-//                        if (Math.abs(xDiff) > threshold && Math.abs(velocityX) > velocity_threshold) {
-//                            if (xDiff > 0) {
-//                                //Swipe Right
-//                                view.startAnimation(animation);
-//
-//
-//
-//                            } else {
-//                                view.startAnimation(animation);
-//                            }
-//                        }
-//                    } else {
-//
-//                    }
-//
-//                    return false;
-//                }
-//            };
-//            gestureDetector = new GestureDetector(listener);
-//            view.setOnTouchListener(this);
-//        }
-//
-//        @Override
-//        public boolean onTouch(View view, MotionEvent motionEvent) {
-//            return gestureDetector.onTouchEvent(motionEvent);
-//        }
-//    }
 }

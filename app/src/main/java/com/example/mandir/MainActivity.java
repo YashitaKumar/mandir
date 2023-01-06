@@ -86,6 +86,7 @@ public class MainActivity extends AppCompatActivity implements ConfettoGenerator
     GifImageView gifImageView;
     protected ViewGroup container;
     TabLayout navigation;
+    Button btn;
 
 
    //Other Variables for working
@@ -102,8 +103,9 @@ public class MainActivity extends AppCompatActivity implements ConfettoGenerator
     FlowersAdapter flowersAdapter;
     BottomSheetBehavior bottomSheetBehavior,handAnimation;
     ArrayList<String> godNamess;
+    ArrayList<Integer> position;
 
-    ViewHolder viewHolder;
+
     View view;
 
 
@@ -144,8 +146,14 @@ public class MainActivity extends AppCompatActivity implements ConfettoGenerator
         f11 = findViewById(R.id.f11);
         parent = findViewById(R.id.constraintLayout7);
         navigation = findViewById(R.id.navigation);
-        view = LayoutInflater.from(parent.getContext()).inflate(R.layout.navigation, parent, false);
-        viewHolder = new ViewHolder(view);
+       btn = findViewById(R.id.temp);
+       btn.setOnClickListener(new View.OnClickListener() {
+           @Override
+           public void onClick(View view) {
+               startActivity(new Intent(MainActivity.this,DummyActivity.class));
+           }
+       });
+       position = getIntent().getIntegerArrayListExtra("pos");
 
         //MAIN MANDIR FUNCTIONING
         //God Images working
@@ -578,7 +586,22 @@ public class MainActivity extends AppCompatActivity implements ConfettoGenerator
         public void getData(ArrayList<MainGods> mg)
         {
 
-            mainGods = new ArrayList<>(mg);
+//            mainGods = new ArrayList<>(mg);
+            mainGods = new ArrayList<>();
+            int p=0,m=0;
+            while((p!=position.size())&&(m!=mg.size()))
+            {
+                if(position.get(p)==m)
+                {
+                    mainGods.add(mg.get(m));
+                    p+=1;
+                    m+=1;
+                }
+                else
+                {
+                    m+=1;
+                }
+            }
                             for(int i=0;i<mainGods.size();i++)
 
                 {
@@ -678,7 +701,7 @@ public class MainActivity extends AppCompatActivity implements ConfettoGenerator
                                 j=0;
                         }
                                 Glide.with(gImage.getContext()).load(mainGods.get(i).getGodImages().get(j).getImage()).into(gImage);
-                                myAdapter.setPos(j);
+
                             }
                             else{
                                 //Swipe Up
@@ -688,7 +711,7 @@ public class MainActivity extends AppCompatActivity implements ConfettoGenerator
                             j=0;
                         }
                                 Glide.with(gImage.getContext()).load(mainGods.get(i).getGodImages().get(j).getImage()).into(gImage);
-                                myAdapter.setPos(j);
+
                             }
                         }
                     }
@@ -706,14 +729,7 @@ public class MainActivity extends AppCompatActivity implements ConfettoGenerator
         }
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder{
 
-        CircleImageView circleImageView;
-        public ViewHolder(@NonNull View itemView) {
-            super(itemView);
-            circleImageView =itemView.findViewById(R.id.nav);
-        }
-    }
 //    @Override
 //    protected void onStart() {
 //        super.onStart();
