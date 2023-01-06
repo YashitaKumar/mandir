@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<MotionScene 
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:motion="http://schemas.android.com/apk/res-auto">
+
+    <Transition
+        motion:constraintSetEnd="@+id/end"
+        motion:constraintSetStart="@id/start"
+        motion:duration="1500"
+        motion:motionInterpolator="easeInOut"
+        motion:pathMotionArc="startVertical">
+       <KeyFrameSet>
+       </KeyFrameSet>
+        <OnClick motion:targetId="@+id/imageView5" />
+    </Transition>
+
+    <ConstraintSet android:id="@+id/start">
+        <Constraint
+            android:id="@+id/imageView5"
+            motion:layout_constraintEnd_toEndOf="parent"
+            android:layout_width="120dp"
+            android:layout_height="120dp"
+            motion:layout_constraintBottom_toBottomOf="parent"
+            motion:layout_constraintVertical_bias="0.0"
+            motion:layout_constraintHorizontal_bias="0.495"
+            motion:layout_constraintTop_toTopOf="parent"
+            motion:layout_constraintStart_toStartOf="parent"
+            android:rotation="5"
+            motion:transitionEasing="cubic(0.2,0.2,0.59,0.19)" />
+    </ConstraintSet>
+
+    <ConstraintSet android:id="@+id/end">
+        <Constraint
+            android:id="@+id/imageView5"
+            motion:layout_constraintEnd_toEndOf="parent"
+            android:layout_width="120dp"
+            android:layout_height="120dp"
+            motion:layout_constraintBottom_toBottomOf="parent"
+            motion:layout_constraintVertical_bias="0.0"
+            motion:layout_constraintHorizontal_bias="0.495"
+            motion:layout_constraintTop_toTopOf="parent"
+            motion:layout_constraintStart_toStartOf="parent"
+            motion:transitionEasing="cubic(0.2,0.2,0.6,0.19)"
+            android:rotation="-15" />
+    </ConstraintSet>
+    <Transition
+        motion:constraintSetStart="@+id/end"
+        motion:constraintSetEnd="@+id/start"
+        motion:motionInterpolator="easeInOut"
+        motion:autoTransition="animateToEnd"
+        motion:duration="1500" />
+</MotionScene>

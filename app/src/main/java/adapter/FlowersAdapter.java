@@ -4,6 +4,11 @@ import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.drawable.Drawable;
+import android.graphics.drawable.DrawableContainer;
+import android.transition.Fade;
+import android.transition.Transition;
+import android.transition.TransitionManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,6 +16,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.content.res.AppCompatResources;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.mandir.MainActivity;
@@ -33,6 +40,25 @@ public class FlowersAdapter extends RecyclerView.Adapter<FlowersAdapter.FlowersV
     private Bitmap bitmap;
     ViewGroup container;
     Resources res;
+
+    ImageView f1,f2,f3,f4,f5,f6,f7,f8,f9,f10,f11;
+    ConstraintLayout parent;
+
+    public void setImageAssets(ImageView f1,ImageView f2,ImageView f3,ImageView f4,ImageView f5,ImageView f6,ImageView f7,ImageView f8,ImageView f9,ImageView f10,ImageView f11,ConstraintLayout parent){
+        this.f1 = f1;
+        this.f2 = f2;
+        this.f3 = f3;
+        this.f4 = f4;
+        this.f5 = f5;
+        this.f6 = f6;
+        this.f7 = f7;
+        this.f8 = f8;
+        this.f9 = f9;
+        this.f10 = f10;
+        this.f11 = f11;
+        this.parent =parent;
+
+    }
 
     public void setRes(Resources res) {
         this.res = res;
@@ -83,8 +109,58 @@ public class FlowersAdapter extends RecyclerView.Adapter<FlowersAdapter.FlowersV
                 );
                 ConfettiManager confettiManager = getConfettiManager().setNumInitialCount(0)
                         .setEmissionDuration(3000)
-                        .setEmissionRate(20)
+                        .setEmissionRate(15)
                         .animate();
+                //Flowers on plate
+                f1.setVisibility(View.INVISIBLE);
+                f2.setVisibility(View.INVISIBLE);
+                f3.setVisibility(View.INVISIBLE);
+                f4.setVisibility(View.INVISIBLE);
+                f5.setVisibility(View.INVISIBLE);
+                f6.setVisibility(View.INVISIBLE);
+                f7.setVisibility(View.INVISIBLE);
+                f8.setVisibility(View.INVISIBLE);
+                f9.setVisibility(View.INVISIBLE);
+                f10.setVisibility(View.INVISIBLE);
+                f11.setVisibility(View.INVISIBLE);
+
+
+                Transition transition = new Fade();
+                transition.setDuration(20000);
+                transition.addTarget(R.id.f1);
+                transition.addTarget(R.id.f2);
+                transition.addTarget(R.id.f3);
+                transition.addTarget(R.id.f4);
+                transition.addTarget(R.id.f5);
+                transition.addTarget(R.id.f6);
+                transition.addTarget(R.id.f7);
+                transition.addTarget(R.id.f8);
+                transition.addTarget(R.id.f9);
+                transition.addTarget(R.id.f10);
+                transition.addTarget(R.id.f11);
+                TransitionManager.beginDelayedTransition(parent, transition);
+                f1.setImageDrawable(AppCompatResources.getDrawable(context,arrImages[pos]));
+                f2.setImageDrawable(AppCompatResources.getDrawable(context,arrImages[pos]));
+                f3.setImageDrawable(AppCompatResources.getDrawable(context,arrImages[pos]));
+                f4.setImageDrawable(AppCompatResources.getDrawable(context,arrImages[pos]));
+                f5.setImageDrawable(AppCompatResources.getDrawable(context,arrImages[pos]));
+                f6.setImageDrawable(AppCompatResources.getDrawable(context,arrImages[pos]));
+                f7.setImageDrawable(AppCompatResources.getDrawable(context,arrImages[pos]));
+                f8.setImageDrawable(AppCompatResources.getDrawable(context,arrImages[pos]));
+                f9.setImageDrawable(AppCompatResources.getDrawable(context,arrImages[pos]));
+                f10.setImageDrawable(AppCompatResources.getDrawable(context,arrImages[pos]));
+                f11.setImageDrawable(AppCompatResources.getDrawable(context,arrImages[pos]));
+                f1.setVisibility(View.VISIBLE);
+                f2.setVisibility(View.VISIBLE);
+                f3.setVisibility(View.VISIBLE);
+                f4.setVisibility(View.VISIBLE);
+                f5.setVisibility(View.VISIBLE);
+                f6.setVisibility(View.VISIBLE);
+                f7.setVisibility(View.VISIBLE);
+                f8.setVisibility(View.VISIBLE);
+                f9.setVisibility(View.VISIBLE);
+                f10.setVisibility(View.VISIBLE);
+                f11.setVisibility(View.VISIBLE);
             }
         });
 

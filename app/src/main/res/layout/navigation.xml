@@ -3,7 +3,7 @@
     android:id="@+id/nav"
     android:layout_width="40dp"
     android:layout_height="40dp"
-    android:src="@drawable/gos3"
+    android:src="@drawable/gos4"
     android:textColor="@color/white"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:android="http://schemas.android.com/apk/res/android"
