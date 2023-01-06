@@ -80,13 +80,13 @@ public class MainActivity extends AppCompatActivity implements ConfettoGenerator
     ConstraintLayout constraintLayout,hand,parent;
     SwipeListener swipeListener;
     MotionLayout motionLayout,motionLayoutSide1,motionLayoutSide2;
-    ImageButton btnF,btnS,btnP,btnPremium;
+    ImageButton btnF,btnS,btnP,btnPremium,btn;
 
     RecyclerView recyclerView,recyclerViewFlowers;
     GifImageView gifImageView;
     protected ViewGroup container;
     TabLayout navigation;
-    Button btn;
+
 
 
    //Other Variables for working
