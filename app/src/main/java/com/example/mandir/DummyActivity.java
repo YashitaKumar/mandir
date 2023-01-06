@@ -79,6 +79,11 @@ public class DummyActivity extends AppCompatActivity {
         });
         recyclerView.setAdapter(myAdapter);
         recyclerView.setHasFixedSize(true);
+//        ArrayList<Integer> prev = new ArrayList<>(myAdapter.getSelected());
+//        if(prev.isEmpty()==false)
+//        {
+//
+//        }
 
         button.setOnClickListener(new View.OnClickListener() {
             @Override

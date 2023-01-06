@@ -66,7 +66,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
 
             holder.textView.setText(mainGods.get(holder.getBindingAdapterPosition()).getGodMainName());
 
-//        Glide.with(holder.circleImageView.getContext()).load(model.getGodName()).into(holder.circleImageView);
+        Glide.with(holder.circleImageView.getContext()).load(mainGods.get(holder.getBindingAdapterPosition()).getGodName()).into(holder.circleImageView);
         holder.pos = pos;
         pos += 1;
         holder.checkBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
@@ -75,7 +75,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
                 if (holder.checkBox.isChecked()) {
                     selected.add(holder.pos);
                 } else {
-//                    holder.textView.setText(mainGods.get(position).getGod());
+                    selected.remove(selected.indexOf(holder.pos));
                 }
             }
         });
@@ -98,7 +98,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
 
             checkBox = itemView.findViewById(R.id.checkBox);
             textView = itemView.findViewById(R.id.godName);
-//            circleImageView = itemView.findViewById(R.id.god);
+            circleImageView = itemView.findViewById(R.id.god);
 
         }
     }
