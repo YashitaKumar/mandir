@@ -4,20 +4,23 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="@drawable/list_shape"
-    android:layout_marginTop="10dp">
+    android:layout_marginTop="10dp"
+    android:padding="8dp">
 
 
-    <de.hdodenhof.circleimageview.CircleImageView
+    <ImageView
         android:id="@+id/god"
         android:layout_width="0dp"
-        android:layout_height="80dp"
-        android:src="@drawable/gos4"
+        android:layout_height="60dp"
+        android:src="@drawable/gos"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@id/guideline12"
         app:layout_constraintHorizontal_bias="0.099"
         app:layout_constraintStart_toStartOf="@id/guideline11"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.031" />
+        app:layout_constraintVertical_bias="0.5"
+        android:scaleType="fitXY"
+        />
 
     <TextView
         android:id="@+id/godName"
@@ -32,18 +35,21 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.5"
-        android:textSize="17sp"/>
+        android:textSize="20sp"/>
 
     <CheckBox
         android:id="@+id/checkBox"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.631"
+        app:layout_constraintHorizontal_bias="0.9"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.5" />
+        app:layout_constraintVertical_bias="0.5"
+        style="@style/coloured_checkbox"
+        android:button="@null"
+        android:background="@drawable/checkbox" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline11"
@@ -56,7 +62,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.27" />
+        app:layout_constraintGuide_percent="0.3" />
 
 
 

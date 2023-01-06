@@ -606,6 +606,9 @@ public class MainActivity extends AppCompatActivity implements ConfettoGenerator
 
                 {
                     CircleImageView imageView = new CircleImageView(MainActivity.this);
+                    ViewGroup.LayoutParams layoutParams = new ViewGroup.LayoutParams(100, 100);
+
+                    imageView.setLayoutParams(layoutParams);
                     Glide.with(imageView.getContext()).load(mainGods.get(i).getGodName()).into(imageView);
                     navigation.addTab(navigation.newTab().setCustomView(imageView));
                 }
@@ -730,26 +733,5 @@ public class MainActivity extends AppCompatActivity implements ConfettoGenerator
     }
 
 
-//    @Override
-//    protected void onStart() {
-//        super.onStart();
-//        myAdapter.startListening();
-//    }
-//
-//    @Override
-//    protected void onStop() {
-//        super.onStop();
-//        myAdapter.stopListening();
-//    }
-public static int getResId(String resName, Class<?> c) {
-
-    try {
-        Field idField = c.getDeclaredField(resName);
-        return idField.getInt(idField);
-    } catch (Exception e) {
-        e.printStackTrace();
-        return -1;
-    }
-}
 
 }

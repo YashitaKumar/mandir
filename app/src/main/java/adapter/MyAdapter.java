@@ -90,7 +90,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
     public class MyViewHolder extends RecyclerView.ViewHolder {
        CheckBox checkBox;
        TextView textView;
-       CircleImageView circleImageView;
+       ImageView circleImageView;
        int pos;
 
         public MyViewHolder(@NonNull View itemView) {

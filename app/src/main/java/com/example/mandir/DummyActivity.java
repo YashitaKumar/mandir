@@ -95,7 +95,7 @@ public class DummyActivity extends AppCompatActivity {
                     Toast.makeText(DummyActivity.this,"Choose atleast One god",Toast.LENGTH_LONG).show();
                 }
                 else {
-                    Toast.makeText(DummyActivity.this, posistions.toString(), Toast.LENGTH_LONG).show();
+//                    Toast.makeText(DummyActivity.this, posistions.toString(), Toast.LENGTH_LONG).show();
                     Intent intent = new Intent(DummyActivity.this, MainActivity.class);
                     intent.putExtra("pos", posistions);
                     startActivity(intent);

@@ -17,4 +17,8 @@
         <item name="android:windowEnterAnimation">@anim/slide_in_bottom</item>
         <item name="android:windowExitAnimation">@anim/slide_out_bottom</item>
     </style>
+    <style name="coloured_checkbox" parent="Theme.AppCompat.DayNight.NoActionBar">
+        <item name = "colorAccent">@color/gold_dark</item>
+        <item name = "android:textColorSecondary">@color/gold_med</item>
+    </style>
 </resources>
