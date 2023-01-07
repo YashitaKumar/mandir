@@ -153,7 +153,10 @@ public class MainActivity extends AppCompatActivity implements ConfettoGenerator
                startActivity(new Intent(MainActivity.this,DummyActivity.class));
            }
        });
-       position = getIntent().getIntegerArrayListExtra("pos");
+       position = (ArrayList<Integer>) PrefConfig.readListFromPref(getApplicationContext());
+       if(position==null) {
+           position = getIntent().getIntegerArrayListExtra("pos");
+       }
 
         //MAIN MANDIR FUNCTIONING
         //God Images working
