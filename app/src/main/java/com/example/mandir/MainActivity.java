@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.annotation.SuppressLint;
+import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -46,6 +47,7 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
@@ -83,6 +85,7 @@ public class MainActivity extends AppCompatActivity implements ConfettoGenerator
     SwipeListener swipeListener;
     MotionLayout motionLayout,motionLayoutSide1,motionLayoutSide2;
     ImageButton btnF,btnS,btnP,btnPremium,btn;
+    TextView testing;
 
     RecyclerView recyclerView,recyclerViewFlowers;
     GifImageView gifImageView;
@@ -378,13 +381,16 @@ public class MainActivity extends AppCompatActivity implements ConfettoGenerator
             public void onClick(View view) {
                 flowersAdapter.setImageAssets(f1,f2,f3,f4,f5,f6,f7,f8,f9,f10,f11,parent);
                 bottomSheetBehavior = BottomSheetBehavior.from(recyclerViewFlowers);
+
                 if(bottomSheetBehavior.getState() == BottomSheetBehavior.STATE_EXPANDED)
                 {
                     bottomSheetBehavior.setState(BottomSheetBehavior.STATE_COLLAPSED);
+
 //                    drawable.setTint(getResources().getColor(R.color.gold_med));
                 }
                 else {
                     bottomSheetBehavior.setState(BottomSheetBehavior.STATE_EXPANDED);
+
 //                    drawable.setTint(getResources().getColor(R.color.gold_light));
                 }
 
@@ -394,14 +400,18 @@ public class MainActivity extends AppCompatActivity implements ConfettoGenerator
             @Override
             public void onClick(View view) {
 
-
-
-
-//                String ct = editText.getText().toString();
-//                int countFlower = Integer.parseInt(ct);
-//                confirm.setOnClickListener(new View.OnClickListener() {
-//                    @Override
-//                    public void onClick(View view) {
+                final AlertDialog.Builder alert = new AlertDialog.Builder(MainActivity.this);
+                View view1 = getLayoutInflater().inflate(R.layout.flower_counts,null);
+                EditText editText = view1.findViewById(R.id.count);
+                Button button = view1.findViewById(R.id.confirm);
+                alert.setView(view1);
+                final AlertDialog alertDialog =alert.create();
+                alertDialog.show();
+                button.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                                        String ct = editText.getText().toString();
+                int countFlower = Integer.parseInt(ct);
                         final Resources res = getResources();
                         size = 156;
                         velocitySlow = 50;
@@ -413,9 +423,10 @@ public class MainActivity extends AppCompatActivity implements ConfettoGenerator
                                 size,
                                 false
                         );
+                        alertDialog.dismiss();
                         ConfettiManager confettiManager = getConfettiManager().setNumInitialCount(0)
                                 .setEmissionDuration(3000)
-                                .setEmissionRate(15)
+                                .setEmissionRate(countFlower)
                                 .animate();
                         f1.setVisibility(View.INVISIBLE);
                         f2.setVisibility(View.INVISIBLE);
@@ -464,6 +475,16 @@ public class MainActivity extends AppCompatActivity implements ConfettoGenerator
                         f9.setVisibility(View.VISIBLE);
                         f10.setVisibility(View.VISIBLE);
                         f11.setVisibility(View.VISIBLE);
+
+                    }
+                });
+
+//                String ct = editText.getText().toString();
+//                int countFlower = Integer.parseInt(ct);
+//                confirm.setOnClickListener(new View.OnClickListener() {
+//                    @Override
+//                    public void onClick(View view) {
+
 
 //                    }
 //                });
@@ -642,6 +663,7 @@ public class MainActivity extends AppCompatActivity implements ConfettoGenerator
                 public void onTabSelected(TabLayout.Tab tab) {
                     int positionNav = navigation.getSelectedTabPosition();
                     Glide.with(gImage.getContext()).load(mainGods.get(positionNav).getGodImages().get(j).getImage()).into(gImage);
+                    i=positionNav;
 
                 }
 

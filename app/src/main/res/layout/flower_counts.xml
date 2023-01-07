@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/textt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Enter Amount Of flowers to Devote"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
+        />
+    <EditText
+        android:id="@+id/count"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:hint="Enter No. of flowers"
+        android:gravity="center"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/textt"
+        android:layout_marginTop="20dp"/>
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/confirm"
+        android:layout_width="100dp"
+        android:layout_height="50dp"
+        android:background="@drawable/savebtn"
+        android:text="Confirm"
+        android:textStyle="bold"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/count"
+        android:layout_marginTop="25dp"/>
+
+
+</RelativeLayout>

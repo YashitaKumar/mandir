@@ -483,6 +483,21 @@
 
         </LinearLayout>
 
+        <ImageButton
+            android:id="@+id/temp"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.95"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:background="@drawable/edit_bg"
+            app:layout_constraintVertical_bias="0.99"
+            android:src="@drawable/draw"
+            android:padding="10dp"
+            />
+
 
 
         <androidx.coordinatorlayout.widget.CoordinatorLayout
@@ -493,59 +508,23 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="1">
+            app:layout_constraintVertical_bias="1"
+            >
+
+
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/flowersSelection"
                 android:layout_width="match_parent"
-                android:layout_height="100dp"
+                android:layout_height="wrap_content"
                 android:scrollbars="horizontal"
                 app:behavior_hideable="true"
                 app:behavior_peekHeight="0dp"
-                app:layout_behavior="com.google.android.material.bottomsheet.BottomSheetBehavior" />
+                app:layout_behavior="com.google.android.material.bottomsheet.BottomSheetBehavior"
+                android:layout_marginTop="10dp"
+                />
 
         </androidx.coordinatorlayout.widget.CoordinatorLayout>
-<!--        <androidx.coordinatorlayout.widget.CoordinatorLayout-->
-<!--            android:id="@+id/flowerCount"-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="100dp"-->
-<!--            app:layout_constraintBottom_toBottomOf="parent"-->
-<!--            app:layout_constraintEnd_toEndOf="parent"-->
-<!--            app:layout_constraintStart_toStartOf="parent"-->
-<!--            app:layout_constraintTop_toTopOf="parent"-->
-<!--            app:layout_constraintVertical_bias="1">-->
-
-<!--            <androidx.constraintlayout.widget.ConstraintLayout-->
-<!--                android:id="@+id/layoutSelection"-->
-<!--                android:layout_width="match_parent"-->
-<!--                android:layout_height="100dp"-->
-<!--                android:scrollbars="horizontal"-->
-<!--                app:behavior_hideable="true"-->
-<!--                app:behavior_peekHeight="0dp"-->
-<!--                app:layout_behavior="com.google.android.material.bottomsheet.BottomSheetBehavior" >-->
-
-<!--                <EditText-->
-<!--                    android:id="@+id/count"-->
-<!--                    android:layout_width="match_parent"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    app:layout_constraintBottom_toBottomOf="parent"-->
-<!--                    app:layout_constraintEnd_toEndOf="parent"-->
-<!--                    app:layout_constraintStart_toStartOf="parent"-->
-<!--                    app:layout_constraintTop_toTopOf="parent"-->
-<!--                    android:hint="Enter The No. of Flowers"-->
-<!--                    android:text="Flowers"-->
-<!--                    android:textColor="@color/white"/>-->
-<!--                <Button-->
-<!--                    android:id="@+id/FlowerCountConfirm"-->
-<!--                    android:layout_width="100dp"-->
-<!--                    android:layout_height="40dp"-->
-<!--                    app:layout_constraintBottom_toBottomOf="parent"-->
-<!--                    app:layout_constraintEnd_toEndOf="parent"-->
-<!--                    app:layout_constraintStart_toStartOf="parent"-->
-<!--                    app:layout_constraintTop_toTopOf="parent"/>-->
-<!--            </androidx.constraintlayout.widget.ConstraintLayout>-->
-
-<!--        </androidx.coordinatorlayout.widget.CoordinatorLayout>-->
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/handAnimation"
@@ -576,20 +555,6 @@
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
-        <ImageButton
-            android:id="@+id/temp"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.95"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            android:background="@drawable/edit_bg"
-            app:layout_constraintVertical_bias="0.99"
-            android:src="@drawable/draw"
-            android:padding="10dp"
-            />
 
 
 
