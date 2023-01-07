@@ -15,6 +15,7 @@ import android.annotation.SuppressLint;
 import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -41,6 +42,7 @@ import android.view.animation.Animation;
 import android.view.animation.LinearInterpolator;
 import android.view.animation.RotateAnimation;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -77,7 +79,7 @@ public class MainActivity extends AppCompatActivity implements ConfettoGenerator
 
     //Views and Layouts on screen
     ImageView gImage,centerBell,thali,flowerThali,f1,f2,f3,f4,f5,f6,f7,f8,f9,f10,f11;
-    ConstraintLayout constraintLayout,hand,parent;
+    ConstraintLayout constraintLayout,hand,parent,flowerCountLayout;
     SwipeListener swipeListener;
     MotionLayout motionLayout,motionLayoutSide1,motionLayoutSide2;
     ImageButton btnF,btnS,btnP,btnPremium,btn;
@@ -86,6 +88,8 @@ public class MainActivity extends AppCompatActivity implements ConfettoGenerator
     GifImageView gifImageView;
     protected ViewGroup container;
     TabLayout navigation;
+    EditText editText;
+    Button confirm;
 
 
 
@@ -101,7 +105,7 @@ public class MainActivity extends AppCompatActivity implements ConfettoGenerator
     int []arrImages;
     String []arrNames;
     FlowersAdapter flowersAdapter;
-    BottomSheetBehavior bottomSheetBehavior,handAnimation;
+    BottomSheetBehavior bottomSheetBehavior,flowers;
     ArrayList<String> godNamess;
     ArrayList<Integer> position;
 
@@ -147,9 +151,16 @@ public class MainActivity extends AppCompatActivity implements ConfettoGenerator
         parent = findViewById(R.id.constraintLayout7);
         navigation = findViewById(R.id.navigation);
        btn = findViewById(R.id.temp);
+//       editText = findViewById(R.id.count);
+//       confirm = findViewById(R.id.FlowerCountConfirm);
+//       flowerCountLayout = findViewById(R.id.layoutSelection);
        btn.setOnClickListener(new View.OnClickListener() {
            @Override
            public void onClick(View view) {
+               SharedPreferences sharedPreferences= getSharedPreferences("PREFERENCES",MODE_PRIVATE);
+               SharedPreferences.Editor editor = sharedPreferences.edit();
+               editor.putString("FirstTimeInstall","Edit");
+               editor.apply();
                startActivity(new Intent(MainActivity.this,DummyActivity.class));
            }
        });
@@ -384,61 +395,66 @@ public class MainActivity extends AppCompatActivity implements ConfettoGenerator
             public void onClick(View view) {
 
 
-                Drawable drawable = btnF.getBackground();
 
-                    final Resources res = getResources();
-                    size = 156;
-                    velocitySlow = 50;
-                    velocityNormal = 100;
 
-                    bitmap = Bitmap.createScaledBitmap(
-                            BitmapFactory.decodeResource(res, R.drawable.p),
-                            size,
-                            size,
-                            false
-                    );
-                    ConfettiManager confettiManager = getConfettiManager().setNumInitialCount(0)
-                            .setEmissionDuration(3000)
-                            .setEmissionRate(15)
-                            .animate();
-                f1.setVisibility(View.INVISIBLE);
-                f2.setVisibility(View.INVISIBLE);
-                f3.setVisibility(View.INVISIBLE);
-                f4.setVisibility(View.INVISIBLE);
-                f5.setVisibility(View.INVISIBLE);
-                f6.setVisibility(View.INVISIBLE);
-                f7.setVisibility(View.INVISIBLE);
-                f8.setVisibility(View.INVISIBLE);
-                f9.setVisibility(View.INVISIBLE);
-                f10.setVisibility(View.INVISIBLE);
-                f11.setVisibility(View.INVISIBLE);
-                f1.setImageDrawable(getDrawable(R.drawable.p));
-                f2.setImageDrawable(getDrawable(R.drawable.p));
-                f3.setImageDrawable(getDrawable(R.drawable.p));
-                f4.setImageDrawable(getDrawable(R.drawable.p));
-                f5.setImageDrawable(getDrawable(R.drawable.p));
-                f6.setImageDrawable(getDrawable(R.drawable.p));
-                f7.setImageDrawable(getDrawable(R.drawable.p));
-                f8.setImageDrawable(getDrawable(R.drawable.p));
-                f9.setImageDrawable(getDrawable(R.drawable.p));
-                f10.setImageDrawable(getDrawable(R.drawable.p));
-                f11.setImageDrawable(getDrawable(R.drawable.p));
-                Transition transition = new Fade();
-                transition.setDuration(20000);
-                transition.addTarget(R.id.f1);
-                transition.addTarget(R.id.f2);
-                transition.addTarget(R.id.f3);
-                transition.addTarget(R.id.f4);
-                transition.addTarget(R.id.f5);
-                transition.addTarget(R.id.f6);
-                transition.addTarget(R.id.f7);
-                transition.addTarget(R.id.f8);
-                transition.addTarget(R.id.f9);
-                transition.addTarget(R.id.f10);
-                transition.addTarget(R.id.f11);
-                TransitionManager.beginDelayedTransition(parent, transition);
-                f1.setVisibility(View.VISIBLE);
-                                        f2.setVisibility(View.VISIBLE);
+//                String ct = editText.getText().toString();
+//                int countFlower = Integer.parseInt(ct);
+//                confirm.setOnClickListener(new View.OnClickListener() {
+//                    @Override
+//                    public void onClick(View view) {
+                        final Resources res = getResources();
+                        size = 156;
+                        velocitySlow = 50;
+                        velocityNormal = 100;
+
+                        bitmap = Bitmap.createScaledBitmap(
+                                BitmapFactory.decodeResource(res, R.drawable.p),
+                                size,
+                                size,
+                                false
+                        );
+                        ConfettiManager confettiManager = getConfettiManager().setNumInitialCount(0)
+                                .setEmissionDuration(3000)
+                                .setEmissionRate(15)
+                                .animate();
+                        f1.setVisibility(View.INVISIBLE);
+                        f2.setVisibility(View.INVISIBLE);
+                        f3.setVisibility(View.INVISIBLE);
+                        f4.setVisibility(View.INVISIBLE);
+                        f5.setVisibility(View.INVISIBLE);
+                        f6.setVisibility(View.INVISIBLE);
+                        f7.setVisibility(View.INVISIBLE);
+                        f8.setVisibility(View.INVISIBLE);
+                        f9.setVisibility(View.INVISIBLE);
+                        f10.setVisibility(View.INVISIBLE);
+                        f11.setVisibility(View.INVISIBLE);
+                        f1.setImageDrawable(getDrawable(R.drawable.p));
+                        f2.setImageDrawable(getDrawable(R.drawable.p));
+                        f3.setImageDrawable(getDrawable(R.drawable.p));
+                        f4.setImageDrawable(getDrawable(R.drawable.p));
+                        f5.setImageDrawable(getDrawable(R.drawable.p));
+                        f6.setImageDrawable(getDrawable(R.drawable.p));
+                        f7.setImageDrawable(getDrawable(R.drawable.p));
+                        f8.setImageDrawable(getDrawable(R.drawable.p));
+                        f9.setImageDrawable(getDrawable(R.drawable.p));
+                        f10.setImageDrawable(getDrawable(R.drawable.p));
+                        f11.setImageDrawable(getDrawable(R.drawable.p));
+                        Transition transition = new Fade();
+                        transition.setDuration(20000);
+                        transition.addTarget(R.id.f1);
+                        transition.addTarget(R.id.f2);
+                        transition.addTarget(R.id.f3);
+                        transition.addTarget(R.id.f4);
+                        transition.addTarget(R.id.f5);
+                        transition.addTarget(R.id.f6);
+                        transition.addTarget(R.id.f7);
+                        transition.addTarget(R.id.f8);
+                        transition.addTarget(R.id.f9);
+                        transition.addTarget(R.id.f10);
+                        transition.addTarget(R.id.f11);
+                        TransitionManager.beginDelayedTransition(parent, transition);
+                        f1.setVisibility(View.VISIBLE);
+                        f2.setVisibility(View.VISIBLE);
                         f3.setVisibility(View.VISIBLE);
                         f4.setVisibility(View.VISIBLE);
                         f5.setVisibility(View.VISIBLE);
@@ -448,6 +464,12 @@ public class MainActivity extends AppCompatActivity implements ConfettoGenerator
                         f9.setVisibility(View.VISIBLE);
                         f10.setVisibility(View.VISIBLE);
                         f11.setVisibility(View.VISIBLE);
+
+//                    }
+//                });
+
+
+
 
             }
         });
