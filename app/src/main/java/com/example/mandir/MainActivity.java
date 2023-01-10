@@ -366,8 +366,8 @@ public class MainActivity extends AppCompatActivity implements ConfettoGenerator
         //flowers dropping
 
         //Flower Selection Working
-        arrImages = new int[]{ R.drawable.f4,R.drawable.rose,R.drawable.f5,R.drawable.f6,R.drawable.f7,R.drawable.f8,R.drawable.f9,R.drawable.f10,R.drawable.f11,R.drawable.f12};
-        arrNames = new String[]{"Parijat","Rose","neelkamal","mogra","lotus","kovidar","gudhal","mogra","champa","ashok"};
+        arrImages = new int[]{ R.drawable.f4,R.drawable.rose,R.drawable.f5,R.drawable.f6,R.drawable.f7,R.drawable.f8};
+        arrNames = new String[]{"Parijat","Rose","neelkamal","mogra","lotus","kovidar"};
         LinearLayoutManager layoutManager = new LinearLayoutManager(this);
         layoutManager.setOrientation(RecyclerView.HORIZONTAL);
         recyclerViewFlowers.setLayoutManager(layoutManager);
