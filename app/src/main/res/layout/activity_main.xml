@@ -160,16 +160,16 @@
             app:layout_constraintVertical_bias="0.0"
             app:layout_constraintDimensionRatio="1:1"/>
 
-<!--        <androidx.recyclerview.widget.RecyclerView-->
-<!--            android:id="@+id/navigation"-->
-<!--            android:layout_width="60dp"-->
-<!--            android:layout_height="40dp"-->
-<!--            app:layout_constraintBottom_toBottomOf="parent"-->
-<!--            app:layout_constraintEnd_toEndOf="parent"-->
-<!--            app:layout_constraintHorizontal_bias="0.5"-->
-<!--            app:layout_constraintStart_toStartOf="parent"-->
-<!--            app:layout_constraintTop_toTopOf="parent"-->
-<!--            app:layout_constraintVertical_bias="0.03" />-->
+        <!--        <androidx.recyclerview.widget.RecyclerView-->
+        <!--            android:id="@+id/navigation"-->
+        <!--            android:layout_width="60dp"-->
+        <!--            android:layout_height="40dp"-->
+        <!--            app:layout_constraintBottom_toBottomOf="parent"-->
+        <!--            app:layout_constraintEnd_toEndOf="parent"-->
+        <!--            app:layout_constraintHorizontal_bias="0.5"-->
+        <!--            app:layout_constraintStart_toStartOf="parent"-->
+        <!--            app:layout_constraintTop_toTopOf="parent"-->
+        <!--            app:layout_constraintVertical_bias="0.03" />-->
         <com.google.android.material.tabs.TabLayout
             android:id="@+id/navigation"
             android:layout_width="200dp"
@@ -187,13 +187,13 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            app:layout_constraintGuide_percent="0.634" />
+            app:layout_constraintGuide_percent="0.65" />
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/guideline8"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            app:layout_constraintGuide_percent="0.98" />
+            app:layout_constraintGuide_percent="0.95" />
 
         <ImageView
             android:id="@+id/flowerThali"
@@ -204,14 +204,14 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="@id/guideline8"
             android:src="@drawable/empty_thali"
-            app:layout_constraintVertical_bias="0.89"
+            app:layout_constraintVertical_bias="0.85"
             app:layout_constraintDimensionRatio="1:1"
             />
 
         <ImageView
             android:id="@+id/f1"
-            android:layout_width="80dp"
-            android:layout_height="80dp"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -222,8 +222,8 @@
             android:visibility="invisible"/>
         <ImageView
             android:id="@+id/f2"
-            android:layout_width="70dp"
-            android:layout_height="70dp"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -234,8 +234,8 @@
             android:visibility="invisible"/>
         <ImageView
             android:id="@+id/f3"
-            android:layout_width="70dp"
-            android:layout_height="70dp"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -246,8 +246,8 @@
             android:visibility="invisible"/>
         <ImageView
             android:id="@+id/f4"
-            android:layout_width="70dp"
-            android:layout_height="70dp"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -258,85 +258,85 @@
             android:visibility="invisible"/>
         <ImageView
             android:id="@+id/f5"
-            android:layout_width="70dp"
-            android:layout_height="70dp"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintVertical_bias="0.85"
-            app:layout_constraintHorizontal_bias="0.79"
+            app:layout_constraintVertical_bias="0.835"
+            app:layout_constraintHorizontal_bias="0.83"
             android:src="@drawable/p"
             android:visibility="invisible"/>
         <ImageView
             android:id="@+id/f6"
-            android:layout_width="70dp"
-            android:layout_height="70dp"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintVertical_bias="0.85"
-            app:layout_constraintHorizontal_bias="0.85"
+            app:layout_constraintVertical_bias="0.829"
+            app:layout_constraintHorizontal_bias="0.748"
             android:src="@drawable/p"
             android:visibility="invisible"/>
         <ImageView
             android:id="@+id/f7"
-            android:layout_width="80dp"
-            android:layout_height="80dp"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintVertical_bias="0.85"
-            app:layout_constraintHorizontal_bias="0.93"
+            app:layout_constraintVertical_bias="0.83"
+            app:layout_constraintHorizontal_bias="0.90"
             android:src="@drawable/p"
             android:visibility="invisible"/>
         <ImageView
             android:id="@+id/f8"
-            android:layout_width="80dp"
-            android:layout_height="80dp"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintVertical_bias="0.85"
-            app:layout_constraintHorizontal_bias="1"
+            app:layout_constraintVertical_bias="0.80"
+            app:layout_constraintHorizontal_bias="0.75"
             android:src="@drawable/p"
             android:visibility="invisible"/>
         <ImageView
             android:id="@+id/f9"
-            android:layout_width="80dp"
-            android:layout_height="80dp"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintVertical_bias="0.87"
-            app:layout_constraintHorizontal_bias="0.96"
+            app:layout_constraintVertical_bias="0.79"
+            app:layout_constraintHorizontal_bias="0.86"
             android:src="@drawable/p"
             android:visibility="invisible"/>
         <ImageView
             android:id="@+id/f10"
-            android:layout_width="80dp"
-            android:layout_height="80dp"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintVertical_bias="0.87"
+            app:layout_constraintVertical_bias="0.79"
             app:layout_constraintHorizontal_bias="0.9"
             android:src="@drawable/p"
             android:visibility="invisible"/>
         <ImageView
             android:id="@+id/f11"
-            android:layout_width="80dp"
-            android:layout_height="80dp"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintVertical_bias="0.87"
+            app:layout_constraintVertical_bias="0.79"
             app:layout_constraintHorizontal_bias="0.8"
             android:src="@drawable/p"
             android:visibility="invisible"/>
@@ -345,7 +345,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            app:layout_constraintGuide_percent="0.039" />
+            app:layout_constraintGuide_percent="0.047" />
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/guideline4"
             android:layout_width="wrap_content"
@@ -361,7 +361,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="@id/guideline4"
             android:src="@drawable/sweets"
-            app:layout_constraintVertical_bias="0.89"
+            app:layout_constraintVertical_bias="0.85"
             app:layout_constraintHorizontal_bias="0.05"
             app:layout_constraintDimensionRatio="1:1"
             />
@@ -370,13 +370,13 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            app:layout_constraintGuide_percent="0.3" />
+            app:layout_constraintGuide_percent="0.33" />
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/guideline6"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            app:layout_constraintGuide_percent="0.69" />
+            app:layout_constraintGuide_percent="0.67" />
 
 
         <ImageView
@@ -393,7 +393,7 @@
 
         <pl.droidsonroids.gif.GifImageView
             android:id="@+id/thaliFire"
-            android:layout_width="60dp"
+            android:layout_width="50dp"
             android:layout_height="0dp"
             android:src="@drawable/fire2"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -485,21 +485,77 @@
 
         <ImageButton
             android:id="@+id/temp"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.95"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             android:background="@drawable/edit_bg"
-            app:layout_constraintVertical_bias="0.99"
+            app:layout_constraintVertical_bias="0.01"
             android:src="@drawable/draw"
-            android:padding="10dp"
+            android:padding="8dp"
+            android:scaleType="fitCenter"
             />
 
 
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/handAnimation"
+            android:layout_width="match_parent"
+            android:layout_height="250dp"
+            android:visibility="visible"
+            app:layoutDescription="@xml/activity_main_xml_handanimation_scene"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="1.0">
 
+            <ImageView
+                android:id="@+id/imageView12"
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:src="@drawable/hand"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.43"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0" />
+
+
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+        <androidx.coordinatorlayout.widget.CoordinatorLayout
+            android:id="@+id/nav"
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="1"
+            >
+            <com.google.android.material.bottomappbar.BottomAppBar
+                android:id="@+id/bottomnav"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:backgroundTint="@color/gold_med"
+                android:gravity="bottom"
+                android:layout_gravity="bottom"/>
+
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_anchor="@id/bottomnav"
+                android:src="@drawable/temple2"
+                app:maxImageSize="30dp"
+                app:tint="@color/gold_med"
+                android:foregroundTint="@color/gold_med"
+                android:backgroundTint="@color/white"/>
+        </androidx.coordinatorlayout.widget.CoordinatorLayout>
         <androidx.coordinatorlayout.widget.CoordinatorLayout
             android:id="@+id/coordinatorLayout6"
             android:layout_width="match_parent"
@@ -507,7 +563,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintTop_toTopOf="@id/nav"
             app:layout_constraintVertical_bias="1"
             >
 
@@ -526,36 +582,31 @@
 
         </androidx.coordinatorlayout.widget.CoordinatorLayout>
 
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/handAnimation"
-            android:layout_width="match_parent"
-            android:layout_height="250dp"
-            android:visibility="visible"
-            app:layoutDescription="@xml/activity_main_xml_handanimation_scene"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="1.0">
-
-            <ImageView
-                android:id="@+id/imageView12"
-                android:layout_width="170dp"
-                android:layout_height="170dp"
-                android:src="@drawable/hand"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.43"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0" />
 
 
+        <!--        <View-->
+        <!--            android:layout_width="match_parent"-->
+        <!--            android:layout_height="35dp"-->
+        <!--            app:layout_constraintBottom_toBottomOf="parent"-->
+        <!--            app:layout_constraintEnd_toEndOf="parent"-->
+        <!--            app:layout_constraintStart_toStartOf="parent"-->
+        <!--            app:layout_constraintTop_toTopOf="parent"-->
+        <!--            app:layout_constraintVertical_bias="1"-->
+        <!--            android:background="@drawable/bottomsheet"/>-->
 
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
-
-
+        <!--        <com.google.android.material.floatingactionbutton.FloatingActionButton-->
+        <!--            android:layout_width="wrap_content"-->
+        <!--            android:layout_height="wrap_content"-->
+        <!--            app:layout_constraintBottom_toBottomOf="parent"-->
+        <!--            app:layout_constraintEnd_toEndOf="parent"-->
+        <!--            app:layout_constraintStart_toStartOf="parent"-->
+        <!--            app:layout_constraintTop_toTopOf="parent"-->
+        <!--            app:layout_constraintVertical_bias="0.985"-->
+        <!--            android:backgroundTint="@color/gold_light"-->
+        <!--            android:src="@drawable/temple2"-->
+        <!--            app:maxImageSize="40dp"-->
+        <!--            android:tintMode="@null"-->
+        <!--            android:foregroundGravity="center"/>-->
 
 
 

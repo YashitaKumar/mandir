@@ -9,7 +9,7 @@
     <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/flower"
         android:layout_width="60dp"
-        android:layout_height="60dp"
+        android:layout_height="65dp"
         android:src="@drawable/p"
         app:civ_border_width="0.5dp"
         app:layout_constraintBottom_toBottomOf="parent"

@@ -73,6 +73,7 @@ import java.util.Random;
 import adapter.FlowersAdapter;
 import adapter.MyAdapter;
 import de.hdodenhof.circleimageview.CircleImageView;
+
 import model.GodImages;
 import model.MainGods;
 import pl.droidsonroids.gif.GifImageView;
@@ -96,7 +97,7 @@ public class MainActivity extends AppCompatActivity implements ConfettoGenerator
 
 
 
-   //Other Variables for working
+    //Other Variables for working
     int i=0;
     int j=0;
     int count,maxCount,btnCount=0,count2=0,count3=0;
@@ -113,6 +114,7 @@ public class MainActivity extends AppCompatActivity implements ConfettoGenerator
     ArrayList<Integer> position;
 
 
+
     View view;
 
 
@@ -123,6 +125,7 @@ public class MainActivity extends AppCompatActivity implements ConfettoGenerator
         setContentView(R.layout.activity_main);
 
         //views on layout
+
         gImage = findViewById(R.id.test);
         constraintLayout = findViewById(R.id.viewForSwipe);
         motionLayout = findViewById(R.id.motionLayout);
@@ -153,24 +156,24 @@ public class MainActivity extends AppCompatActivity implements ConfettoGenerator
         f11 = findViewById(R.id.f11);
         parent = findViewById(R.id.constraintLayout7);
         navigation = findViewById(R.id.navigation);
-       btn = findViewById(R.id.temp);
+        btn = findViewById(R.id.temp);
 //       editText = findViewById(R.id.count);
 //       confirm = findViewById(R.id.FlowerCountConfirm);
 //       flowerCountLayout = findViewById(R.id.layoutSelection);
-       btn.setOnClickListener(new View.OnClickListener() {
-           @Override
-           public void onClick(View view) {
-               SharedPreferences sharedPreferences= getSharedPreferences("PREFERENCES",MODE_PRIVATE);
-               SharedPreferences.Editor editor = sharedPreferences.edit();
-               editor.putString("FirstTimeInstall","Edit");
-               editor.apply();
-               startActivity(new Intent(MainActivity.this,DummyActivity.class));
-           }
-       });
-       position = (ArrayList<Integer>) PrefConfig.readListFromPref(getApplicationContext());
-       if(position==null) {
-           position = getIntent().getIntegerArrayListExtra("pos");
-       }
+        btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                SharedPreferences sharedPreferences= getSharedPreferences("PREFERENCES",MODE_PRIVATE);
+                SharedPreferences.Editor editor = sharedPreferences.edit();
+                editor.putString("FirstTimeInstall","Edit");
+                editor.apply();
+                startActivity(new Intent(MainActivity.this,DummyActivity.class));
+            }
+        });
+        position = (ArrayList<Integer>) PrefConfig.readListFromPref(getApplicationContext());
+        if(position==null) {
+            position = getIntent().getIntegerArrayListExtra("pos");
+        }
 
         //MAIN MANDIR FUNCTIONING
         //God Images working
@@ -214,14 +217,14 @@ public class MainActivity extends AppCompatActivity implements ConfettoGenerator
 
         //Animation for hand
         hand.setY(1000f);
-        hand.animate().translationYBy(-1050f).setDuration(1500);
-                    new Handler().postDelayed(new Runnable() {
-                @Override
-                public void run() {
-                    gifImageView.setVisibility(View.VISIBLE);
-                    hand.animate().translationYBy(1100f).setDuration(1500);
-                }
-            },2000);
+        hand.animate().translationYBy(-1050f).setDuration(2000);
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                gifImageView.setVisibility(View.VISIBLE);
+                hand.animate().translationYBy(1100f).setDuration(2000);
+            }
+        },2000);
 
         //sound Players
         final MediaPlayer mediaPlayer = MediaPlayer.create(this, R.raw.sound);
@@ -397,8 +400,23 @@ public class MainActivity extends AppCompatActivity implements ConfettoGenerator
             }
         });
         btnF.setOnClickListener(new View.OnClickListener() {
+
             @Override
             public void onClick(View view) {
+
+                final Resources res = getResources();
+                size = 156;
+                velocitySlow = 50;
+                velocityNormal = 100;
+
+                bitmap = Bitmap.createScaledBitmap(
+                        BitmapFactory.decodeResource(res, R.drawable.p),
+                        size,
+                        size,
+                        false
+                );
+                ConfettiManager confettiManager = getConfettiManager().setNumInitialCount(0)
+                        .setEmissionDuration(3000);
 
                 final AlertDialog.Builder alert = new AlertDialog.Builder(MainActivity.this);
                 View view1 = getLayoutInflater().inflate(R.layout.flower_counts,null);
@@ -410,71 +428,66 @@ public class MainActivity extends AppCompatActivity implements ConfettoGenerator
                 button.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                                        String ct = editText.getText().toString();
-                int countFlower = Integer.parseInt(ct);
-                        final Resources res = getResources();
-                        size = 156;
-                        velocitySlow = 50;
-                        velocityNormal = 100;
+                        String ct = editText.getText().toString();
+                        int countFlower = Integer.parseInt(ct);
+                        if(countFlower>100)
+                        {
+                            Toast.makeText(MainActivity.this,"Too Many Flowers,pls enter again",Toast.LENGTH_LONG);
+                        }
+                        else
+                        {
+                            confettiManager.setEmissionRate(countFlower).animate();
+                            alertDialog.dismiss();
+                            f1.setVisibility(View.INVISIBLE);
+                            f2.setVisibility(View.INVISIBLE);
+                            f3.setVisibility(View.INVISIBLE);
+                            f4.setVisibility(View.INVISIBLE);
+                            f5.setVisibility(View.INVISIBLE);
+                            f6.setVisibility(View.INVISIBLE);
+                            f7.setVisibility(View.INVISIBLE);
+                            f8.setVisibility(View.INVISIBLE);
+                            f9.setVisibility(View.INVISIBLE);
+                            f10.setVisibility(View.INVISIBLE);
+                            f11.setVisibility(View.INVISIBLE);
+                            f1.setImageDrawable(getDrawable(R.drawable.p));
+                            f2.setImageDrawable(getDrawable(R.drawable.p));
+                            f3.setImageDrawable(getDrawable(R.drawable.p));
+                            f4.setImageDrawable(getDrawable(R.drawable.p));
+                            f5.setImageDrawable(getDrawable(R.drawable.p));
+                            f6.setImageDrawable(getDrawable(R.drawable.p));
+                            f7.setImageDrawable(getDrawable(R.drawable.p));
+                            f8.setImageDrawable(getDrawable(R.drawable.p));
+                            f9.setImageDrawable(getDrawable(R.drawable.p));
+                            f10.setImageDrawable(getDrawable(R.drawable.p));
+                            f11.setImageDrawable(getDrawable(R.drawable.p));
+                            Transition transition = new Fade();
+                            transition.setDuration(20000);
+                            transition.addTarget(R.id.f1);
+                            transition.addTarget(R.id.f2);
+                            transition.addTarget(R.id.f3);
+                            transition.addTarget(R.id.f4);
+                            transition.addTarget(R.id.f5);
+                            transition.addTarget(R.id.f6);
+                            transition.addTarget(R.id.f7);
+                            transition.addTarget(R.id.f8);
+                            transition.addTarget(R.id.f9);
+                            transition.addTarget(R.id.f10);
+                            transition.addTarget(R.id.f11);
+                            TransitionManager.beginDelayedTransition(parent, transition);
+                            f1.setVisibility(View.VISIBLE);
+                            f2.setVisibility(View.VISIBLE);
+                            f3.setVisibility(View.VISIBLE);
+                            f4.setVisibility(View.VISIBLE);
+                            f5.setVisibility(View.VISIBLE);
+                            f6.setVisibility(View.VISIBLE);
+                            f7.setVisibility(View.VISIBLE);
+                            f8.setVisibility(View.VISIBLE);
+                            f9.setVisibility(View.VISIBLE);
+                            f10.setVisibility(View.VISIBLE);
+                            f11.setVisibility(View.VISIBLE);
 
-                        bitmap = Bitmap.createScaledBitmap(
-                                BitmapFactory.decodeResource(res, R.drawable.p),
-                                size,
-                                size,
-                                false
-                        );
-                        alertDialog.dismiss();
-                        ConfettiManager confettiManager = getConfettiManager().setNumInitialCount(0)
-                                .setEmissionDuration(3000)
-                                .setEmissionRate(countFlower)
-                                .animate();
-                        f1.setVisibility(View.INVISIBLE);
-                        f2.setVisibility(View.INVISIBLE);
-                        f3.setVisibility(View.INVISIBLE);
-                        f4.setVisibility(View.INVISIBLE);
-                        f5.setVisibility(View.INVISIBLE);
-                        f6.setVisibility(View.INVISIBLE);
-                        f7.setVisibility(View.INVISIBLE);
-                        f8.setVisibility(View.INVISIBLE);
-                        f9.setVisibility(View.INVISIBLE);
-                        f10.setVisibility(View.INVISIBLE);
-                        f11.setVisibility(View.INVISIBLE);
-                        f1.setImageDrawable(getDrawable(R.drawable.p));
-                        f2.setImageDrawable(getDrawable(R.drawable.p));
-                        f3.setImageDrawable(getDrawable(R.drawable.p));
-                        f4.setImageDrawable(getDrawable(R.drawable.p));
-                        f5.setImageDrawable(getDrawable(R.drawable.p));
-                        f6.setImageDrawable(getDrawable(R.drawable.p));
-                        f7.setImageDrawable(getDrawable(R.drawable.p));
-                        f8.setImageDrawable(getDrawable(R.drawable.p));
-                        f9.setImageDrawable(getDrawable(R.drawable.p));
-                        f10.setImageDrawable(getDrawable(R.drawable.p));
-                        f11.setImageDrawable(getDrawable(R.drawable.p));
-                        Transition transition = new Fade();
-                        transition.setDuration(20000);
-                        transition.addTarget(R.id.f1);
-                        transition.addTarget(R.id.f2);
-                        transition.addTarget(R.id.f3);
-                        transition.addTarget(R.id.f4);
-                        transition.addTarget(R.id.f5);
-                        transition.addTarget(R.id.f6);
-                        transition.addTarget(R.id.f7);
-                        transition.addTarget(R.id.f8);
-                        transition.addTarget(R.id.f9);
-                        transition.addTarget(R.id.f10);
-                        transition.addTarget(R.id.f11);
-                        TransitionManager.beginDelayedTransition(parent, transition);
-                        f1.setVisibility(View.VISIBLE);
-                        f2.setVisibility(View.VISIBLE);
-                        f3.setVisibility(View.VISIBLE);
-                        f4.setVisibility(View.VISIBLE);
-                        f5.setVisibility(View.VISIBLE);
-                        f6.setVisibility(View.VISIBLE);
-                        f7.setVisibility(View.VISIBLE);
-                        f8.setVisibility(View.VISIBLE);
-                        f9.setVisibility(View.VISIBLE);
-                        f10.setVisibility(View.VISIBLE);
-                        f11.setVisibility(View.VISIBLE);
+                        }
+
 
                     }
                 });
@@ -617,11 +630,12 @@ public class MainActivity extends AppCompatActivity implements ConfettoGenerator
 
     private ConfettiManager getConfettiManager() {
         final ConfettiSource source = new ConfettiSource(0, -size, container.getWidth(), -size);
-        Rect rect = new Rect(container.getLeft(),container.getTop(),container.getRight(),flowerThali.getBottom());
-        return new ConfettiManager(this, this, source, container)
+        Rect rect = new Rect(container.getLeft(),container.getTop(),container.getRight(),container.getBottom());
+        return new ConfettiManager(getApplicationContext(), this, source, container)
                 .setVelocityX(0, velocitySlow)
                 .setVelocityY(velocityNormal, velocitySlow)
                 .setRotationalVelocity(180, 90)
+                .setBound(rect)
                 .setTouchEnabled(true);
     }
 
@@ -648,16 +662,16 @@ public class MainActivity extends AppCompatActivity implements ConfettoGenerator
                     m+=1;
                 }
             }
-                            for(int i=0;i<mainGods.size();i++)
+            for(int i=0;i<mainGods.size();i++)
 
-                {
-                    CircleImageView imageView = new CircleImageView(MainActivity.this);
-                    ViewGroup.LayoutParams layoutParams = new ViewGroup.LayoutParams(100, 100);
+            {
+                CircleImageView imageView = new CircleImageView(MainActivity.this);
+                ViewGroup.LayoutParams layoutParams = new ViewGroup.LayoutParams(100, 100);
 
-                    imageView.setLayoutParams(layoutParams);
-                    Glide.with(imageView.getContext()).load(mainGods.get(i).getGodName()).into(imageView);
-                    navigation.addTab(navigation.newTab().setCustomView(imageView));
-                }
+                imageView.setLayoutParams(layoutParams);
+                Glide.with(imageView.getContext()).load(mainGods.get(i).getGodName()).into(imageView);
+                navigation.addTab(navigation.newTab().setCustomView(imageView));
+            }
             navigation.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
                 @Override
                 public void onTabSelected(TabLayout.Tab tab) {
@@ -722,11 +736,11 @@ public class MainActivity extends AppCompatActivity implements ConfettoGenerator
                             else
                             {
                                 //Swipe Left
-                        i+=1;
-                        if(i>=mainGods.size())
-                        {
-                            i=0;
-                        }
+                                i+=1;
+                                if(i>=mainGods.size())
+                                {
+                                    i=0;
+                                }
                                 Glide.with(gImage.getContext()).load(mainGods.get(i).getGodImages().get(j).getImage()).into(gImage);
 
                             }
@@ -739,27 +753,27 @@ public class MainActivity extends AppCompatActivity implements ConfettoGenerator
                             if(yDiff>0)
                             {
                                 //Swipe Down
-                        if(j!=0)
-                        {
-                            j-=1;
-                        }
-                        else
-                        {
-                            if(mainGods.isEmpty()==false)
-                                j=mainGods.get(0).getGodImages().size()-1;
-                            else
-                                j=0;
-                        }
+                                if(j!=0)
+                                {
+                                    j-=1;
+                                }
+                                else
+                                {
+                                    if(mainGods.isEmpty()==false)
+                                        j=mainGods.get(0).getGodImages().size()-1;
+                                    else
+                                        j=0;
+                                }
                                 Glide.with(gImage.getContext()).load(mainGods.get(i).getGodImages().get(j).getImage()).into(gImage);
 
                             }
                             else{
                                 //Swipe Up
                                 j+=1;
-                        if(j>=mainGods.get(0).getGodImages().size())
-                        {
-                            j=0;
-                        }
+                                if(j>=mainGods.get(0).getGodImages().size())
+                                {
+                                    j=0;
+                                }
                                 Glide.with(gImage.getContext()).load(mainGods.get(i).getGodImages().get(j).getImage()).into(gImage);
 
                             }
@@ -778,6 +792,8 @@ public class MainActivity extends AppCompatActivity implements ConfettoGenerator
             return gestureDetector.onTouchEvent(motionEvent);
         }
     }
+
+
 
 
 
